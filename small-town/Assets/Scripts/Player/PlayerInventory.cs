@@ -34,11 +34,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddDummyItem() {
 
-        AddItem("Dummy", 1, ItemType.CONSUMABLE, ConsumableEffect.HEAL, 120f);
-
-        DestroyDisplay();
-
-        DisplayItem();
+        AddItem("Dummy", "Lorem ipsum. this is a test text.", 1, 1, ItemType.CONSUMABLE, ConsumableEffect.HEAL, 120f);
 
     }
 
@@ -46,22 +42,28 @@ public class PlayerInventory : MonoBehaviour
 
         inventoryContent = PlayerPrefs.GetString("inventory");
 
-        if ( inventoryContent == "" ) {
-             
-            AddItem("WoodenStick", 1, ItemType.WEAPON, ConsumableEffect.NONE, 0f);
+        if (inventoryContent == "") {
+
+            AddItem("WoodenStick", "Part of a tree branch. Can be use in combat", 1, 1, ItemType.WEAPON, ConsumableEffect.NONE, 0f);
             inventoryContent = PlayerPrefs.GetString("inventory");
+
+        } else {
+
+            DisplayItem();
 
         }
 
-        DisplayItem();
 
     }
 
-    public void AddItem( string name, int quantity, ItemType itemType, ConsumableEffect consumableEffect, float consumableEffectValue ) {
+    public void AddItem( string name, string description , int quantity, int price, ItemType itemType, ConsumableEffect consumableEffect, float consumableEffectValue ) {
 
-        string addingContent = name + "," + quantity + "," + itemType + "," + consumableEffect + "," + consumableEffectValue + ";";
+        string addingContent = name + "," + description + "," + quantity + "," + price + ","+ itemType + "," + consumableEffect + "," + consumableEffectValue + ";";
         PlayerPrefs.SetString("inventory", PlayerPrefs.GetString("inventory") + addingContent);
         inventoryContent = PlayerPrefs.GetString("inventory");
+
+        DestroyDisplay();
+        DisplayItem();
 
     }
 
@@ -108,7 +110,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
     public void RemoveItem( int index ) {
-
+        
         string[] individualItems = inventoryContent.Split(char.Parse(";"));
 
         string finalReplacement = "";
@@ -149,6 +151,16 @@ public class PlayerInventory : MonoBehaviour
 
     public void DisplayItem() {
 
+        /* PARAMETER
+         * 0: NAME
+         * 1: DESCRIPTION
+         * 2: QUANTITY
+         * 3: PRICE
+         * 4: ITEM TYPE
+         * 5: CONSUMABLE EFFECT
+         * 6: COSUMABLE EFFECT VALUE
+         * */
+
         if (inventoryContent == "") return;
 
         string[] individualItems = inventoryContent.Split(char.Parse(";"));
@@ -168,15 +180,21 @@ public class PlayerInventory : MonoBehaviour
 
             item.itemName = itemContent[0];
 
-            item.quantityDisplay.text = itemContent[1];
+            item.description = itemContent[1];
 
-            item.quantity = int.Parse(itemContent[1]);
+            item.quantityDisplay.text = itemContent[2];
 
-            ItemType parsedItemType = (ItemType)System.Enum.Parse(typeof(ItemType), itemContent[2]);
+            item.quantity = int.Parse(itemContent[2]);
+
+            item.sellPrice = int.Parse(itemContent[3]);
+
+            ItemType parsedItemType = (ItemType)System.Enum.Parse(typeof(ItemType), itemContent[4]);
             item.itemType = parsedItemType;
 
-            ConsumableEffect parsedConsumableEffect = (ConsumableEffect)System.Enum.Parse(typeof(ConsumableEffect), itemContent[3]);
+            ConsumableEffect parsedConsumableEffect = (ConsumableEffect)System.Enum.Parse(typeof(ConsumableEffect), itemContent[5]);
             item.consumableEffect = parsedConsumableEffect;
+
+            item.consumableEffectValue = int.Parse(itemContent[6]);
 
             foreach (GameObject iconObject in icons) {
 
