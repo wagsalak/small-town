@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats PlayerStatInstance { get; private set; }
 
     public string weapon;
     public float health;
@@ -11,5 +12,19 @@ public class PlayerStats : MonoBehaviour
     public float waterLevel;
     public float moveSpeed;
     public float attackTime;
+    public int money;
+
+    private void Awake() {
+
+        if (PlayerStatInstance == null) {
+
+            PlayerStatInstance = this;
+
+        } else {
+
+            Destroy(this.gameObject);
+
+        }
+    }
 
 }
