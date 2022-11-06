@@ -15,4 +15,22 @@ public class ItemDisplayUI : MonoBehaviour
 
     }
 
+    private void Update() {
+
+        if (item.itemType == ItemType.WEAPON) {
+
+            if (UtilityManager.UtilityInstance.EquipedWeapon() == item.itemName) {
+
+                item.quantityDisplay.text = "E";
+
+            } else {
+
+                item.quantityDisplay.text = "";
+
+            }
+
+        }
+
+    }
+
 }

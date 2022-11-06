@@ -35,13 +35,57 @@ public class ShopManagerScript : MonoBehaviour
     [Header("Items")]
     public ShopDisplayItems[] shopDisplayItems;
 
+
+    [Header("Player")]
+    public float playerMaxDistance;
+
+    private GameObject player;
+    private float distance;
+    private bool isCliked;
+
+    private void Start() {
+
+        player = GameObject.FindGameObjectWithTag("Player");
+
+    }
+
+    private void Update() {
+
+        CheckPlayerDisptance();
+
+    }
+
     private void OnMouseDown() {
+
+        isCliked = true;
+
+    }
+
+    private void CheckPlayerDisptance() {
+
+        if (!isCliked) return;
+
+        distance = Vector2.Distance(transform.position, player.transform.position);
+
+        if (playerMaxDistance >= distance) {
+
+            DisplayShopContent();
+            player.GetComponent<PlayerControlsManager>().canControl = false;
+            isCliked = false;
+
+        }
+
+
+    }
+
+    private void DisplayShopContent() {
 
         for (int i = 0; i <= shopDisplayItems.Length - 1; i++) {
 
             GameObject obj = Instantiate(shopDisplayUiPrefab);
             obj.transform.SetParent(shopDisplayContainer);
             obj.transform.localScale = Vector2.one;
+            obj.transform.localPosition = Vector2.one;
 
             Item item = obj.GetComponent<Item>();
 
@@ -58,6 +102,13 @@ public class ShopManagerScript : MonoBehaviour
         }
 
         shopUiObject.SetActive(true);
+    }
+
+
+    private void OnDrawGizmos() {
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, playerMaxDistance);
 
     }
 

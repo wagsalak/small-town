@@ -18,6 +18,7 @@ public class PlayerControlsManager : MonoBehaviour
     Vector2 movePosition;
 
     bool isAttacking;
+    bool isEating;
 
     string lastRotation;
 
@@ -30,7 +31,13 @@ public class PlayerControlsManager : MonoBehaviour
 
     void Update() {
 
-        if (!canControl) return;
+        if (!canControl) { 
+
+            playerAnim.Play("idle_" + lastRotation);
+            movePosition = transform.position;
+            return; 
+
+        }
 
         Move();
         Attack();
@@ -39,7 +46,7 @@ public class PlayerControlsManager : MonoBehaviour
 
     private void Move() {
 
-        if ( isAttacking ) return;
+        if ( isAttacking || isEating ) return;
 
         if (Input.GetMouseButtonDown(0)) {
 
@@ -80,6 +87,8 @@ public class PlayerControlsManager : MonoBehaviour
 
         if ( Input.GetMouseButtonDown(1) && !isAttacking ) {
 
+            movePosition = transform.position;
+
             playerAnim.Play("attack_" + lastRotation);
 
             isAttacking = true;
@@ -89,12 +98,14 @@ public class PlayerControlsManager : MonoBehaviour
                 case "front":
 
                     damageCollider[0].SetActive(true);
+                    InstanceWeapon(weaponFollowTargets[0], 1);
 
                     break;
 
                 case "back":
 
                     damageCollider[1].SetActive(true);
+                    InstanceWeapon(weaponFollowTargets[1], -1);
 
                     break;
 
@@ -103,10 +114,12 @@ public class PlayerControlsManager : MonoBehaviour
                     if ( playerObjects[2].transform.localEulerAngles.y < 180 ){
 
                         damageCollider[2].SetActive(true);
+                        InstanceWeapon(weaponFollowTargets[2], 1);
 
                     } else {
 
                         damageCollider[3].SetActive(true);
+                        InstanceWeapon(weaponFollowTargets[2], 1);
 
                     }
 
@@ -117,6 +130,21 @@ public class PlayerControlsManager : MonoBehaviour
             StartCoroutine(StopAttack());
 
         }
+
+    }
+
+    GameObject dummyWeapon;
+    private void InstanceWeapon( Transform target, int layer ) {
+
+        if (UtilityManager.UtilityInstance.EquipedWeapon() == "") return;
+
+        GameObject weapon = Instantiate( Resources.Load("Weapons/" + UtilityManager.UtilityInstance.EquipedWeapon() ) as GameObject);
+        weapon.transform.parent = target;
+        weapon.transform.localPosition = Vector2.zero;
+        weapon.transform.localScale = Vector2.one;
+        weapon.transform.localEulerAngles = Vector2.zero;
+        weapon.GetComponent<SpriteRenderer>().sortingOrder = layer;
+        dummyWeapon = weapon;
 
     }
 
@@ -131,6 +159,8 @@ public class PlayerControlsManager : MonoBehaviour
             obj.SetActive(false);
 
         }
+
+        if (dummyWeapon != null) Destroy(dummyWeapon);
 
     }
 
@@ -177,6 +207,24 @@ public class PlayerControlsManager : MonoBehaviour
     public void SetPlayerControlCondition(bool val) {
 
         canControl = val;
+
+    }
+
+    public void Eat() {
+
+        playerAnim.Play("eat_" + lastRotation);
+
+        isEating = true;
+
+        StartCoroutine( StopEating() );
+
+    }
+
+    IEnumerator StopEating() {
+
+        yield return new WaitForSeconds(playerStats.eatTime);
+
+        isEating = false;
 
     }
 

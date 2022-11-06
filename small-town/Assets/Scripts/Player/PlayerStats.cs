@@ -12,6 +12,7 @@ public class PlayerStats : MonoBehaviour
     public float waterLevel;
     public float moveSpeed;
     public float attackTime;
+    public float eatTime;
     public int money;
 
     private void Awake() {
