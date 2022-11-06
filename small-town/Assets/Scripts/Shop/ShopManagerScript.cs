@@ -71,6 +71,7 @@ public class ShopManagerScript : MonoBehaviour
 
             DisplayShopContent();
             player.GetComponent<PlayerControlsManager>().canControl = false;
+            PlayerInventory.InventoryInstance.isShopOpen = true;
             isCliked = false;
 
         }

@@ -13,6 +13,8 @@ public class PlayerInventory : MonoBehaviour
 
     public string inventoryContent;
 
+    [HideInInspector] public bool isShopOpen;
+
     [Header("UI Display")]
     public Transform inventoryContentContainer;
     public GameObject itemDisplayPrefab;
@@ -62,12 +64,25 @@ public class PlayerInventory : MonoBehaviour
         PlayerPrefs.SetString("inventory", PlayerPrefs.GetString("inventory") + addingContent);
         inventoryContent = PlayerPrefs.GetString("inventory");
 
+        SimplePopUpManager.SPM_Instance.ShowPopUp("Obtained " + name + ". x" + quantity);
+
         DestroyDisplay();
         StartCoroutine(DelayDisplay()); // INCASE MESSED UP
 
     }
 
     public void UseItem(Item item) {
+
+        if (isShopOpen) {
+
+            //RemoveItem(item.inventoryIndex);
+
+            print("ITEM SOLD " + item.quantity + " : " + (item.sellPrice * item.quantity));
+            SimplePopUpManager.SPM_Instance.ShowPopUp("succesfully sold " + item.itemName + " x" + item.quantity + "\nobtained " + (item.sellPrice * item.quantity) + " coins.");
+
+            return;
+
+        }
 
         switch (item.itemType) {
 
@@ -78,16 +93,23 @@ public class PlayerInventory : MonoBehaviour
                     case ConsumableEffect.HEAL:
                         GetComponent<PlayerStats>().health += item.consumableEffectValue;
                         if (GetComponent<PlayerStats>().health >= 100) GetComponent<PlayerStats>().health = 100;
+
+                        SimplePopUpManager.SPM_Instance.ShowPopUp("used " + item.itemName + " x1");
+
                         break;
 
                     case ConsumableEffect.HUNGER:
                         GetComponent<PlayerStats>().hungerLevel += item.consumableEffectValue;
                         if (GetComponent<PlayerStats>().hungerLevel >= 100) GetComponent<PlayerStats>().hungerLevel = 100;
+
+                        SimplePopUpManager.SPM_Instance.ShowPopUp("used " + item.itemName + " x1");
                         break;
 
                     case ConsumableEffect.WATER:
                         GetComponent<PlayerStats>().waterLevel += item.consumableEffectValue;
                         if (GetComponent<PlayerStats>().waterLevel >= 100) GetComponent<PlayerStats>().waterLevel = 100;
+
+                        SimplePopUpManager.SPM_Instance.ShowPopUp("used " + item.itemName + " x1");
                         break;
 
                 }
@@ -107,6 +129,8 @@ public class PlayerInventory : MonoBehaviour
             case ItemType.WEAPON:
 
                 UtilityManager.UtilityInstance.SetEquipedWeapon(item.itemName);
+
+                SimplePopUpManager.SPM_Instance.ShowPopUp("equiped " + item.itemName + ".");
 
                 break;
         }

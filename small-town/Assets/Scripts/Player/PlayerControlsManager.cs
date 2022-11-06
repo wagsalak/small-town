@@ -22,10 +22,17 @@ public class PlayerControlsManager : MonoBehaviour
 
     string lastRotation;
 
+    private RaycastHit2D hit;
+    private Vector2 rayDirection;
+
+    [Space(10)]
+    public LayerMask obstacleLayer;
+
     void Start() {
 
         canControl = true;
         lastRotation = "front";
+        rayDirection = Vector2.down;
 
     }
 
@@ -66,9 +73,20 @@ public class PlayerControlsManager : MonoBehaviour
 
             }
 
+            if (HasObstacle()) SimplePopUpManager.SPM_Instance.ShowPopUp("There's an obstacle in front of you. Try going another way.");
         }
 
         if ((Vector2)transform.position != movePosition) {
+
+            SetRayCastDirection();
+
+            if (HasObstacle()) {
+
+                movePosition = transform.position;
+                playerAnim.Play("idle_" + lastRotation);
+                return;
+
+            }
 
             transform.position = Vector2.MoveTowards(transform.position, movePosition, playerStats.moveSpeed * Time.deltaTime);
 
@@ -246,6 +264,46 @@ public class PlayerControlsManager : MonoBehaviour
         List<RaycastResult> raysastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, raysastResults);
         return raysastResults;
+
+    }
+
+    private bool HasObstacle() { 
+
+        return Physics2D.Raycast(transform.position, rayDirection, 0.5f, obstacleLayer);
+
+    }
+
+    private void SetRayCastDirection() {
+
+        switch (lastRotation) {
+
+            case "front":
+
+                rayDirection = Vector2.down;
+
+                break;
+
+            case "back":
+
+                rayDirection = Vector2.up;
+
+                break;
+
+            case "side":
+
+                if (playerObjects[2].transform.localEulerAngles.y < 180) {
+
+                    rayDirection = Vector2.right;
+
+                } else {
+
+                    rayDirection = Vector2.left;
+
+                }
+
+                break;
+
+        }
 
     }
 
