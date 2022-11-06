@@ -17,6 +17,8 @@ public class ShopUiManager : MonoBehaviour
 
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControlsManager>().canControl = true;
 
+        PlayerInventory.InventoryInstance.isShopOpen = false;
+
         gameObject.SetActive(false);
 
     }

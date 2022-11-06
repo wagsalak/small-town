@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class HitableObjectManager : MonoBehaviour
 {
-
     public Item item;
     public Sprite displaySprite;
     public GameObject itemDropPrefab;
     public float objectHitPoint;
+
+    [Header("Effects")]
+    public GameObject hitParticle;
+    public float offSetX;
+    public float offSetY;
 
     [Header("Animation")]
     public Animator anim;
@@ -21,19 +25,13 @@ public class HitableObjectManager : MonoBehaviour
             objectHitPoint -= 1f;
             anim.Play(stateName);
 
+            Instantiate(hitParticle, new Vector3(transform.position.x + offSetX, transform.position.y + offSetY, 0f), Quaternion.identity);
+
             if (objectHitPoint <= 0) {
 
                 GameObject obj = Instantiate(itemDropPrefab, transform.position, Quaternion.identity);
 
-                foreach (Transform child in transform)   {
-
-                    if (child.name == "Item") {
-
-                        child.gameObject.GetComponent<SpriteRenderer>().sprite = displaySprite;
-
-                    }
-
-                }
+                obj.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = displaySprite;
 
                 obj.GetComponent<Item>().itemName = item.itemName;
                 obj.GetComponent<Item>().description = item.description;
