@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ShopManagerScript : MonoBehaviour
 {
@@ -25,9 +26,11 @@ public class ShopManagerScript : MonoBehaviour
     }
 
     [Header("Shopkeeper Details")]
+    public string shopName;
     public string shopkeeperName;
 
     [Header("UI")]
+    public TextMeshProUGUI shopNameDisplayText;
     public GameObject shopUiObject;
     public Transform shopDisplayContainer;
     public GameObject shopDisplayUiPrefab;
@@ -102,6 +105,7 @@ public class ShopManagerScript : MonoBehaviour
 
         }
 
+        shopNameDisplayText.text = shopName;
         shopUiObject.SetActive(true);
     }
 

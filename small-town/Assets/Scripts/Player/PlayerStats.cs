@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     public float health;
     public float hungerLevel;
     public float waterLevel;
+    public float stamina;
     public float moveSpeed;
     public float attackTime;
     public float eatTime;
@@ -26,6 +27,7 @@ public class PlayerStats : MonoBehaviour
             Destroy(this.gameObject);
 
         }
+
     }
 
 }

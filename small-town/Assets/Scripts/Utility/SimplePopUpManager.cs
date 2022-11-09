@@ -26,12 +26,8 @@ public class SimplePopUpManager : MonoBehaviour
             Destroy(this.gameObject);
 
         }
-    }
-
-    private void Start() {
 
         canvasGroup = propUpUiMain.GetComponent<CanvasGroup>();
-
     }
 
     private void Update() {

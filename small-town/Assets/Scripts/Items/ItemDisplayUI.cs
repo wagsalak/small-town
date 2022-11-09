@@ -31,6 +31,20 @@ public class ItemDisplayUI : MonoBehaviour
 
         }
 
+        if (item.itemType == ItemType.COSMETICS) {
+
+            if (UtilityManager.UtilityInstance.EquipedSkin() == item.itemName) {
+
+                item.quantityDisplay.text = "E";
+
+            } else {
+
+                item.quantityDisplay.text = "";
+
+            }
+
+        }
+
     }
 
 }

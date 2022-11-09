@@ -34,19 +34,14 @@ public class PlayerInventory : MonoBehaviour
 
     }
 
-    public void AddDummyItem() {
-
-        AddItem("Dummy", "Lorem ipsum. this is a test text.", 1, 1, ItemType.CONSUMABLE, ConsumableEffect.HEAL, 120f);
-
-    }
-
     private void Start() {
 
         inventoryContent = PlayerPrefs.GetString("inventory");
 
         if (inventoryContent == "") {
 
-            AddItem("Wooden Stick", "Part of a tree branch. Can be use in combat", 1, 1, ItemType.WEAPON, ConsumableEffect.NONE, 0f);
+            AddItem("Basic Clothing", "Comfy cothes.", 1, 1, ItemType.COSMETICS, ConsumableEffect.NONE, 0f);
+
             inventoryContent = PlayerPrefs.GetString("inventory");
 
         } else {
@@ -64,7 +59,7 @@ public class PlayerInventory : MonoBehaviour
         PlayerPrefs.SetString("inventory", PlayerPrefs.GetString("inventory") + addingContent);
         inventoryContent = PlayerPrefs.GetString("inventory");
 
-        SimplePopUpManager.SPM_Instance.ShowPopUp("Obtained " + name + ". x" + quantity);
+        SimplePopUpManager.SPM_Instance.ShowPopUp("Obtained " + name + " x " + quantity + ".");
 
         DestroyDisplay();
         StartCoroutine(DelayDisplay()); // INCASE MESSED UP
@@ -75,11 +70,29 @@ public class PlayerInventory : MonoBehaviour
 
         if (isShopOpen) {
 
-            //RemoveItem(item.inventoryIndex);
+            switch (item.itemType)  {
 
-            print("ITEM SOLD " + item.quantity + " : " + (item.sellPrice * item.quantity));
-            SimplePopUpManager.SPM_Instance.ShowPopUp("succesfully sold " + item.itemName + " x" + item.quantity + "\nobtained " + (item.sellPrice * item.quantity) + " coins.");
+                case ItemType.CONSUMABLE:
 
+                    SimplePopUpManager.SPM_Instance.ShowPopUp("Succesfully sold " + item.itemName + " x 1."  + "\nObtained <color=yellow>" + (item.sellPrice) + "</color> coins.");
+                    RemoveItem((int)item.inventoryIndex);
+
+                    break;
+
+                case ItemType.MISC:
+
+                    SimplePopUpManager.SPM_Instance.ShowPopUp("Succesfully sold " + item.itemName + " x 1." + "\nObtained <color=yellow>" + (item.sellPrice) + "</color> coins.");
+                    RemoveItem((int)item.inventoryIndex);
+
+                    break;
+
+                default:
+
+                    SimplePopUpManager.SPM_Instance.ShowPopUp("Cannot sell this item.");
+
+                    break;
+
+            }
             return;
 
         }
@@ -94,7 +107,7 @@ public class PlayerInventory : MonoBehaviour
                         GetComponent<PlayerStats>().health += item.consumableEffectValue;
                         if (GetComponent<PlayerStats>().health >= 100) GetComponent<PlayerStats>().health = 100;
 
-                        SimplePopUpManager.SPM_Instance.ShowPopUp("used " + item.itemName + " x1");
+                        SimplePopUpManager.SPM_Instance.ShowPopUp("Used " + item.itemName + " x 1.");
 
                         break;
 
@@ -102,14 +115,14 @@ public class PlayerInventory : MonoBehaviour
                         GetComponent<PlayerStats>().hungerLevel += item.consumableEffectValue;
                         if (GetComponent<PlayerStats>().hungerLevel >= 100) GetComponent<PlayerStats>().hungerLevel = 100;
 
-                        SimplePopUpManager.SPM_Instance.ShowPopUp("used " + item.itemName + " x1");
+                        SimplePopUpManager.SPM_Instance.ShowPopUp("Used " + item.itemName + " x 1.");
                         break;
 
                     case ConsumableEffect.WATER:
                         GetComponent<PlayerStats>().waterLevel += item.consumableEffectValue;
                         if (GetComponent<PlayerStats>().waterLevel >= 100) GetComponent<PlayerStats>().waterLevel = 100;
 
-                        SimplePopUpManager.SPM_Instance.ShowPopUp("used " + item.itemName + " x1");
+                        SimplePopUpManager.SPM_Instance.ShowPopUp("Used " + item.itemName + " x 1.");
                         break;
 
                 }
@@ -122,7 +135,11 @@ public class PlayerInventory : MonoBehaviour
 
             case ItemType.COSMETICS:
 
+                UtilityManager.UtilityInstance.SetEquipedSkin( item.itemName );
 
+                GetComponent<SkinsManager>().ChangeSkin( item.itemName );
+
+                SimplePopUpManager.SPM_Instance.ShowPopUp("Equiped <color=yellow>" + UtilityManager.UtilityInstance.EquipedSkin() + "</color>.");
 
                 break;
 
@@ -130,7 +147,7 @@ public class PlayerInventory : MonoBehaviour
 
                 UtilityManager.UtilityInstance.SetEquipedWeapon(item.itemName);
 
-                SimplePopUpManager.SPM_Instance.ShowPopUp("equiped " + item.itemName + ".");
+                SimplePopUpManager.SPM_Instance.ShowPopUp("Equiped <color=yellow>" + item.itemName + "</color>.");
 
                 break;
         }
@@ -219,7 +236,6 @@ public class PlayerInventory : MonoBehaviour
                     child.gameObject.GetComponent<Item>().quantityDisplay.text = "" + child.gameObject.GetComponent<Item>().quantity;
                     isExisting = true;
 
-
                 }
 
             }
@@ -282,5 +298,115 @@ public class PlayerInventory : MonoBehaviour
         }
 
     }
+
+    #region ITEM SORTING -- WILL CLEAN THIS IF I HAVE MORE TIME LOL.
+    public void DisplayItemSorted(string itemType) {
+
+
+        DestroyDisplay();
+
+        if (itemType != "") {
+            
+            StartCoroutine(DelayDisplaySorted(itemType));
+
+        } else {
+
+            StartCoroutine(DelayDisplay());
+
+        }
+
+    }
+
+
+    public void DisplayItemSortedMethod( string a ) {
+
+        if (inventoryContent == "") return;
+
+        bool isExisting = false; 
+
+        string[] individualItems = inventoryContent.Split(char.Parse(";"));
+
+        for (int i = 0; i <= individualItems.Length - 1; i++) {
+
+            isExisting = false;
+
+            string[] itemContent = individualItems[i].Split(char.Parse(","));
+
+            if (individualItems[i] == "") break;
+
+            print(itemContent[4] + " " + a);
+
+            if (itemContent[4] != a) {
+
+            } else {
+
+                foreach (Transform child in inventoryContentContainer) {
+
+                    if (child.gameObject.GetComponent<Item>().itemName == itemContent[0]) {
+
+                        child.gameObject.GetComponent<Item>().quantity += int.Parse(itemContent[2]);
+                        child.gameObject.GetComponent<Item>().quantityDisplay.text = "" + child.gameObject.GetComponent<Item>().quantity;
+                        isExisting = true;
+
+
+                    }
+
+                }
+
+                if (!isExisting) {
+
+                    GameObject obj = Instantiate(itemDisplayPrefab);
+                    obj.transform.SetParent(inventoryContentContainer);
+                    obj.transform.localPosition = Vector2.zero;
+                    obj.transform.localScale = Vector2.one;
+
+                    Item item = obj.GetComponent<Item>();
+
+                    item.itemName = itemContent[0];
+
+                    item.description = itemContent[1];
+
+                    item.quantity = int.Parse(itemContent[2]);
+
+                    item.quantityDisplay.text = itemContent[2];
+
+                    item.sellPrice = int.Parse(itemContent[3]);
+
+                    ItemType parsedItemType = (ItemType)System.Enum.Parse(typeof(ItemType), itemContent[4]);
+                    item.itemType = parsedItemType;
+
+                    ConsumableEffect parsedConsumableEffect = (ConsumableEffect)System.Enum.Parse(typeof(ConsumableEffect), itemContent[5]);
+                    item.consumableEffect = parsedConsumableEffect;
+
+                    item.consumableEffectValue = int.Parse(itemContent[6]);
+
+                    foreach (GameObject iconObject in icons)
+                    {
+
+                        if (iconObject.name == item.itemName)
+                        {
+
+                            item.itemIconDisplay.sprite = iconObject.GetComponent<Image>().sprite;
+
+                        }
+
+                    }
+
+                    item.inventoryIndex = i;
+                }
+            }
+        }
+
+    }
+
+
+    IEnumerator DelayDisplaySorted( string a ) { 
+
+        yield return new WaitForSeconds(0.1f);
+        DisplayItemSortedMethod(a);
+
+    }
+
+#endregion
 
 }
