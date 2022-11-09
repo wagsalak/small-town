@@ -39,9 +39,14 @@ public class ItemShopDisplay : MonoBehaviour
 
     private void BuyItem() {
 
-        if ( PlayerStats.PlayerStatInstance.money > price ) {
+        if ( UtilityManager.UtilityInstance.Money() > price ) {
 
             PlayerInventory.InventoryInstance.AddItem(item.itemName, item.description, 1, item.sellPrice, item.itemType, item.consumableEffect, item.consumableEffectValue);
+            UtilityManager.UtilityInstance.SetMoney( UtilityManager.UtilityInstance.Money() - price );
+
+        } else {
+
+            SimplePopUpManager.SPM_Instance.ShowPopUp("Insufficient funds.");
 
         }
         

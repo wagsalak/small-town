@@ -13,6 +13,8 @@ public class DescriptionMouseFollow : MonoBehaviour
     public float offSetX;
     public float offSetY;
 
+    public bool hoveringOther;
+
     void Start() {
 
         descprtionDisplayObject.SetActive(false);
@@ -21,7 +23,7 @@ public class DescriptionMouseFollow : MonoBehaviour
 
     void Update() {
 
-        if (!IsPointerOverUIElement(GetEventSystemRaycastResults())) {
+        if (!IsPointerOverUIElement(GetEventSystemRaycastResults()) && !hoveringOther) {
 
             descprtionDisplayObject.SetActive(false);
             return;
@@ -35,11 +37,14 @@ public class DescriptionMouseFollow : MonoBehaviour
 
     public void Display(Item item) {
 
-        description.text = "<color=yellow>" + item.itemName + "</color>\n\n"
+        description.text = "<color=yellow>" + item.itemName.ToUpper() + "</color>\n" +
+            "Type: " + item.itemType.ToString() + "\n"
             + item.description + "\n\n"
+            + "Quantity: " + item.quantity + "\n"
             + "Sell Price: " + item.sellPrice;
 
     }
+
 
     public void FollowMouse() {
 

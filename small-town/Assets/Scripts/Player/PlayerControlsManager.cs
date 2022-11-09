@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.AI;
 
 public class PlayerControlsManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PlayerControlsManager : MonoBehaviour
 
     public bool canControl;
 
-    Vector2 movePosition;
+    public Vector2 movePosition;
 
     bool isAttacking;
     bool isEating;
@@ -28,20 +29,33 @@ public class PlayerControlsManager : MonoBehaviour
     [Space(10)]
     public LayerMask obstacleLayer;
 
+    [Space(10)]
+    public NavMeshAgent navMesh;
+
     void Start() {
 
+        movePosition = transform.position;
+
         canControl = true;
+
         lastRotation = "front";
+
         rayDirection = Vector2.down;
 
     }
 
     void Update() {
 
+        transform.eulerAngles = Vector3.zero;
+
         if (!canControl) { 
 
             playerAnim.Play("idle_" + lastRotation);
+
             movePosition = transform.position;
+
+            if( navMesh.enabled ) navMesh.SetDestination(movePosition);
+
             return; 
 
         }
@@ -56,6 +70,8 @@ public class PlayerControlsManager : MonoBehaviour
         if ( isAttacking || isEating ) return;
 
         if (Input.GetMouseButtonDown(0)) {
+
+            SoundManager.SoundManagerInstance.PlayClick();
 
             if (IsPointerOverUIElement(GetEventSystemRaycastResults())) return;
 
@@ -73,22 +89,11 @@ public class PlayerControlsManager : MonoBehaviour
 
             }
 
-            if (HasObstacle()) SimplePopUpManager.SPM_Instance.ShowPopUp("There's an obstacle in front of you. Try going another way.");
         }
 
         if ((Vector2)transform.position != movePosition) {
 
-            SetRayCastDirection();
-
-            if (HasObstacle()) {
-
-                movePosition = transform.position;
-                playerAnim.Play("idle_" + lastRotation);
-                return;
-
-            }
-
-            transform.position = Vector2.MoveTowards(transform.position, movePosition, playerStats.moveSpeed * Time.deltaTime);
+            navMesh.SetDestination( movePosition );
 
             playerAnim.Play("walk_" + lastRotation);
 
@@ -97,7 +102,6 @@ public class PlayerControlsManager : MonoBehaviour
             playerAnim.Play("idle_" + lastRotation);
 
         }
-       
 
     }
 
@@ -105,7 +109,20 @@ public class PlayerControlsManager : MonoBehaviour
 
         if ( Input.GetMouseButtonDown(1) && !isAttacking ) {
 
+            if (PlayerStats.PlayerStatInstance.stamina <= 0) {
+
+                SimplePopUpManager.SPM_Instance.ShowPopUp("You need some rest. Rest in your bed to acquire more Stamina.");
+                return;
+
+            }
+
+            PlayerStats.PlayerStatInstance.stamina -= 3f;
+
+            SoundManager.SoundManagerInstance.PlayAttack();
+
             movePosition = transform.position;
+
+            navMesh.SetDestination(movePosition);
 
             playerAnim.Play("attack_" + lastRotation);
 
@@ -234,6 +251,10 @@ public class PlayerControlsManager : MonoBehaviour
 
         isEating = true;
 
+        movePosition = transform.position;
+
+        navMesh.SetDestination(movePosition);
+
         StartCoroutine( StopEating() );
 
     }
@@ -264,46 +285,6 @@ public class PlayerControlsManager : MonoBehaviour
         List<RaycastResult> raysastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, raysastResults);
         return raysastResults;
-
-    }
-
-    private bool HasObstacle() { 
-
-        return Physics2D.Raycast(transform.position, rayDirection, 0.5f, obstacleLayer);
-
-    }
-
-    private void SetRayCastDirection() {
-
-        switch (lastRotation) {
-
-            case "front":
-
-                rayDirection = Vector2.down;
-
-                break;
-
-            case "back":
-
-                rayDirection = Vector2.up;
-
-                break;
-
-            case "side":
-
-                if (playerObjects[2].transform.localEulerAngles.y < 180) {
-
-                    rayDirection = Vector2.right;
-
-                } else {
-
-                    rayDirection = Vector2.left;
-
-                }
-
-                break;
-
-        }
 
     }
 
