@@ -116,7 +116,7 @@ public class PlayerControlsManager : MonoBehaviour
 
             }
 
-            PlayerStats.PlayerStatInstance.stamina -= 3f;
+            PlayerStats.PlayerStatInstance.stamina -= 0.5f;
 
             SoundManager.SoundManagerInstance.PlayAttack();
 
