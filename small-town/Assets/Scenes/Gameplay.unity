@@ -449,6 +449,10 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2380,6 +2384,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -4506,11 +4514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 164417467}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 164417470}
@@ -5121,11 +5130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 173225741}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 173225744}
@@ -12744,6 +12754,10 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -13657,8 +13671,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16430,6 +16444,10 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -17044,6 +17062,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -18218,6 +18240,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58844353}
     m_Modifications:
+    - target: {fileID: 3889527762858610304, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
+      propertyPath: requiredTool
+      value: Pick Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 3889527762858610309, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
       propertyPath: m_Name
       value: Rock
@@ -18569,6 +18595,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -19530,6 +19560,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -22251,11 +22285,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 826208692}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 826208695}
@@ -23131,11 +23166,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 853718341}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 853718344}
@@ -24345,6 +24381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 894704112}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
@@ -26103,11 +26140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 957169493}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 957169496}
@@ -26799,6 +26837,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58844353}
     m_Modifications:
+    - target: {fileID: 3889527762858610304, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
+      propertyPath: requiredTool
+      value: Pick Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 3889527762858610309, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
       propertyPath: m_Name
       value: Rock
@@ -27746,11 +27788,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 1054152074}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 1054152077}
@@ -27840,6 +27883,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -28355,6 +28402,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -32962,11 +33013,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 1231616975}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 1231616978}
@@ -33955,6 +34007,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58844353}
     m_Modifications:
+    - target: {fileID: 3889527762858610304, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
+      propertyPath: requiredTool
+      value: Pick Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 3889527762858610309, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
       propertyPath: m_Name
       value: Rock
@@ -34804,6 +34860,10 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -35599,11 +35659,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 1314667359}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 1314667362}
@@ -35945,6 +36006,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -38650,6 +38715,10 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -39245,6 +39314,10 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -39666,6 +39739,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -40612,6 +40689,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -44428,6 +44509,10 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -46059,11 +46144,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 1696966073}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 1696966076}
@@ -46446,6 +46532,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -47152,6 +47242,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -48853,6 +48947,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -50614,6 +50712,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58844353}
     m_Modifications:
+    - target: {fileID: 3889527762858610304, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
+      propertyPath: requiredTool
+      value: Pick Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 3889527762858610309, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
       propertyPath: m_Name
       value: Rock
@@ -52063,6 +52165,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58844353}
     m_Modifications:
+    - target: {fileID: 3889527762858610304, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
+      propertyPath: requiredTool
+      value: Pick Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 3889527762858610309, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
       propertyPath: m_Name
       value: Rock
@@ -53551,6 +53657,10 @@ PrefabInstance:
     - target: {fileID: 575354238236007122, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: quantity
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
       objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
@@ -56021,6 +56131,10 @@ PrefabInstance:
       propertyPath: quantity
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -56914,11 +57028,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ddb09805cde3c42b70d595557d1369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredTool: Basic Sword
   item: {fileID: 2096559148}
   displaySprite: {fileID: 210859269, guid: aeaa27c46393ba04390b198b9ea3c854, type: 3}
   itemDropPrefab: {fileID: 716313084111031828, guid: 0648c2bfaa90f724fa9cadb3ba500e39, type: 3}
   objectHitPoint: 5
-  hitParticle: {fileID: 2247793486317060764, guid: 7fe71462b14f36e49a11b1d8c3a9c08d, type: 3}
+  hitParticle: {fileID: 6399194801610953548, guid: a85155cf8619a4149a5db8b7e707f235, type: 3}
   offSetX: 0
   offSetY: 1
   anim: {fileID: 2096559151}
@@ -58188,7 +58303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2134604474
 RectTransform:
   m_ObjectHideFlags: 0
@@ -58694,6 +58809,10 @@ PrefabInstance:
       propertyPath: playerTransform
       value: 
       objectReference: {fileID: 394278847}
+    - target: {fileID: 575354238236007123, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
+      propertyPath: requiredTool
+      value: Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 575354238236007125, guid: 8b9842accbaf34f45bd91ed5df0c40be, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -58751,6 +58870,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58844353}
     m_Modifications:
+    - target: {fileID: 3889527762858610304, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
+      propertyPath: requiredTool
+      value: Pick Axe
+      objectReference: {fileID: 0}
     - target: {fileID: 3889527762858610309, guid: 1089fd865f5204f42bdca8bf04ef2678, type: 3}
       propertyPath: m_Name
       value: Rock

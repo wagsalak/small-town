@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HitableObjectManager : MonoBehaviour
 {
+
+    public string requiredTool; // Name of tool that can do damage.
+
     public Item item;
     public Sprite displaySprite;
     public GameObject itemDropPrefab;
@@ -18,34 +21,50 @@ public class HitableObjectManager : MonoBehaviour
     public Animator anim;
     public string stateName;
 
+    private void Update() {
+
+
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision) {
 
-        if (collision.tag == "Attack") {
+        if (requiredTool == UtilityManager.UtilityInstance.EquipedWeapon()) {
 
-            objectHitPoint -= 1f;
-            anim.Play(stateName);
+            if (collision.tag == "Attack") {
 
-            Instantiate(hitParticle, new Vector3(transform.position.x + offSetX, transform.position.y + offSetY, 0f), Quaternion.identity);
+                objectHitPoint -= 1f;
+                anim.Play(stateName);
 
-            if (objectHitPoint <= 0) {
+                Instantiate(hitParticle, new Vector3(transform.position.x + offSetX, transform.position.y + offSetY, 0f), Quaternion.identity);
 
-                GameObject obj = Instantiate(itemDropPrefab, transform.position, Quaternion.identity);
+                if (objectHitPoint <= 0) {
 
-                obj.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = displaySprite;
+                    GameObject obj = Instantiate(itemDropPrefab, transform.position, Quaternion.identity);
 
-                obj.GetComponent<Item>().itemName = item.itemName;
-                obj.GetComponent<Item>().description = item.description;
-                obj.GetComponent<Item>().quantity = item.quantity;
-                obj.GetComponent<Item>().sellPrice = item.sellPrice;
-                obj.GetComponent<Item>().itemType = item.itemType;
-                obj.GetComponent<Item>().consumableEffect = item.consumableEffect;
-                obj.GetComponent<Item>().consumableEffectValue = item.consumableEffectValue;
+                    obj.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = displaySprite;
 
-                Destroy(gameObject);
+                    obj.GetComponent<Item>().itemName = item.itemName;
+                    obj.GetComponent<Item>().description = item.description;
+                    obj.GetComponent<Item>().quantity = item.quantity;
+                    obj.GetComponent<Item>().sellPrice = item.sellPrice;
+                    obj.GetComponent<Item>().itemType = item.itemType;
+                    obj.GetComponent<Item>().consumableEffect = item.consumableEffect;
+                    obj.GetComponent<Item>().consumableEffectValue = item.consumableEffectValue;
+
+                    Destroy(gameObject);
+
+                }
 
             }
 
+        } else {
+
+            SimplePopUpManager.SPM_Instance.ShowPopUp( requiredTool + " needed." );
+
         }
+
+        
 
     }
 
